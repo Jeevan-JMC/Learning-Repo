@@ -1,0 +1,108 @@
+#------------------------------------- List of modules ----------------------------------
+# file
+# apt
+# get_url
+# unarchive
+# user
+# lineinfile
+# replace
+# template 
+# command 
+# debug
+# register
+--- 
+- name: Install configure and start nexus
+  become: yes
+  hosts: all
+  gather_facts: yes
+  tasks:
+  # Step1: Create Custom directories
+  - name: Create directories for Nexus
+    ansible.builtin.file:
+      path: "{{ item.dest }}"
+      state: directory
+      mode: 0775
+    loop:
+    - { dest: '/opt/nexus_software', message: nexus folder created}
+    - { dest: '/opt/siva', message: siva folder created}
+  # Step2: Install Openjdk8
+  - name: Install openjdk 8
+    ansible.builtin.apt:
+      name: openjdk-8-jdk
+      state: present
+      update_cache: yes
+  # Step3: Download Nexus software
+  - name: Download Nexus Software
+    ansible.builtin.get_url:
+      url: https://download.sonatype.com/nexus/3/nexus-3.45.0-01-unix.tar.gz
+      dest: /opt/nexus_software
+  # Step4: Unarchive the nexus tar
+  - name: Unarchive nexus
+    ansible.builtin.unarchive:
+      src: /opt/nexus_software/nexus-3.45.0-01-unix.tar.gz
+      dest: /opt
+      remote_src: yes
+  # Step5: Create the nexus user
+  - name: Create Nexus User
+    ansible.builtin.user:
+      name: nexus
+      state: present
+      create_home: yes 
+  # Step6: Add nexus user to sudoers file, for password less authentication 
+  - name: Add nexus user to sudoers
+    ansible.builtin.lineinfile:
+      path: /etc/sudoers
+      state: present
+      line: 'nexus ALL=(ALL) NOPASSWD: ALL'
+      validate: /usr/sbin/visudo -cf %s 
+  # Step7: Change Ownership and permissions for Nexus directories
+  - name: Change Ownership and permissions for Nexus
+    ansible.builtin.file:
+      path: "{{ item.dest }}"
+      owner: nexus
+      group: nexus
+      mode: 0775
+      recurse: true # this will make the contents inside the below folder to nexus user
+    loop:
+    - { dest: '/opt/nexus-3.45.0-01'}
+    - { dest: '/opt/sonatype-work'}
+  # Step8: Update the nexus.rc file to run as a nexus user
+  - name: Update nexus.rc file 
+    ansible.builtin.replace:
+      path: /opt/nexus-3.45.0-01/bin/nexus.rc
+      regexp: '^#run.*$'
+      replace: 'run_as_user="nexus"'
+      backup: yes
+  # Step9: Create link to nexus service script
+  - name: Create a symbolic link for nexus service
+    ansible.builtin.file:
+      src: /opt/nexus-3.45.0-01/bin/nexus
+      dest: /etc/init.d/nexus
+      state: link
+  # Step 10: Create systemd service file for Nexus (optional but recommended)
+  - name: Copy Nexus systemd service file
+    ansible.builtin.template:
+      src: nexus.service  # Ensure you have a nexus.service file ready in your folder
+      dest: /etc/systemd/system/nexus.service
+  # Step 11: Reload systemd and start Nexus service
+  - name: Start and enable Nexus service
+    ansible.builtin.service:
+      name: nexus
+      enabled: yes
+      state: started
+      daemon_reload: true
+  # Step12: Retrieve and print the nexus admin password
+  - name: Retrieve Nexus admin password
+    ansible.builtin.command: cat /opt/sonatype-work/nexus3/admin.password
+    register: nexus_admin_password
+  # Step13: Print the Nexus password
+  - name: Print the nexus password
+    debug:
+      msg: "The Nexus Admin Password is {{ nexus_admin_password.stdout }}"
+
+
+
+
+
+
+
