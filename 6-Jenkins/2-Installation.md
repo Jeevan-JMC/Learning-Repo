@@ -6,7 +6,7 @@ Jenkins requires Java to run. We'll install **OpenJDK 21**.
 
 ```bash
 sudo apt update
-sudo apt install fontconfig openjdk-21-jre -y
+sudo apt install fontconfig openjdk-21-jre
 ```
 
 ✅ Verify the Java version:
@@ -34,14 +34,14 @@ OpenJDK 64-Bit Server VM (build 21.0.3+11-Debian-2, mixed mode, sharing)
 
 ```bash
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
-  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
 ```
 
 2. **Add Jenkins repository:**
 
 ```bash
-echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 ```
 
@@ -94,3 +94,4 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 👉 [https://www.jenkins.io/doc/book/installing/linux/](https://www.jenkins.io/doc/book/installing/linux/)
 
 ---
+
