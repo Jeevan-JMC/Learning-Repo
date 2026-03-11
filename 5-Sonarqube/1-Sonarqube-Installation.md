@@ -19,9 +19,9 @@
 
 ---
 
-## 2. Install Maven 3.8.8
+## 2. Install Maven 3.8.9
 
-1. Download Maven 3.8.8:
+1. Download Maven 3.8.9:
    ```bash
    cd /opt
    wget https://dlcdn.apache.org/maven/maven-3/3.8.9/binaries/apache-maven-3.8.9-bin.tar.gz
@@ -46,7 +46,7 @@ To ensure that Java and Maven are available to all users, follow these steps:
    ```bash
    export JAVA_HOME=/opt/jdk-17
    export PATH=$PATH:$JAVA_HOME/bin
-   export M2_HOME=/opt/apache-maven-3.8.8
+   export M2_HOME=/opt/apache-maven-3.8.9
    export PATH=$PATH:$M2_HOME/bin
    ```
 
@@ -78,8 +78,8 @@ To ensure that Java and Maven are available to all users, follow these steps:
 
    - You should see output similar to:
    ```
-   Apache Maven 3.8.8
-   Maven home: /opt/apache-maven-3.8.8
+   Apache Maven 3.8.9
+   Maven home: /opt/apache-maven-3.8.9
    Java version: 17.0.2, vendor: Oracle Corporation, runtime: /opt/jdk-17
    ```
 
@@ -118,4 +118,5 @@ sh sonar.sh status
 * It will ask for userid/passwd.
   * By default sonarqube has created as userid as `admin` and password as `admin`
   * Popup appears to change the password. Do change it and makesure u remember the password, as its difficult to get it back.
+
 
