@@ -37,7 +37,7 @@ Edit the SSH configuration file to allow password authentication and disable roo
 
 3. Restart the SSH service to apply the changes:
    ```bash
-   sudo service sshd restart
+   sudo service ssh restart
    ```
 
 ---
@@ -63,7 +63,7 @@ Edit the SSH configuration file to allow password authentication and disable roo
 
 ---
 
-## 4. Install Maven 3.8.8
+## 4. Install Maven 3.8.9
 
 1. Download Maven 3.8.9:
    ```bash
@@ -90,7 +90,7 @@ To ensure that Java and Maven are available to all users, follow these steps:
    ```bash
    export JAVA_HOME=/opt/jdk-17
    export PATH=$PATH:$JAVA_HOME/bin
-   export M2_HOME=/opt/apache-maven-3.8.8
+   export M2_HOME=/opt/apache-maven-3.8.9
    export PATH=$PATH:$M2_HOME/bin
    ```
 
@@ -122,8 +122,8 @@ To ensure that Java and Maven are available to all users, follow these steps:
 
    - You should see output similar to:
    ```
-   Apache Maven 3.8.8
-   Maven home: /opt/apache-maven-3.8.8
+   Apache Maven 3.8.9
+   Maven home: /opt/apache-maven-3.8.9
    Java version: 17.0.2, vendor: Oracle Corporation, runtime: /opt/jdk-17
    ```
 
