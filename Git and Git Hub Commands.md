@@ -196,22 +196,7 @@ git pull
 ```
 
 ---
-
-# Useful Tips
-
-* `main` is the default branch in most GitHub repositories.
-* Always `git pull` before `git push`.
-* Write meaningful commit messages.
-
-```
-
-If you want, I can also give you:
-- **Advanced Git commands `.md`**
-- **Git workflow for projects**
-- **GitHub README template `.md`**
-
----
-
+````md
 Here is a **typical Git & GitHub workflow format** 
 
 # Git & GitHub Workflow
@@ -354,11 +339,10 @@ Pull Latest Code
 * Always **pull latest code before pushing**.
 * Use **branches for every feature or bug fix**.
 
-If you want, I can also show:
+# Useful Tips
 
-* **Professional Git workflow used in companies (Git Flow)**
-* **GitHub workflow diagram**
-* **Complete Git learning roadmap** 🚀
+* `main` is the default branch in most GitHub repositories.
+* Always `git pull` before `git push`.
+* Write meaningful commit messages.
 
-- **50+ Git commands cheat sheet**.
 ```
