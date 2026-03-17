@@ -1,4 +1,4 @@
-Here’s a simple **Git & GitHub command cheat sheet in `.md` (Markdown) format** you can copy directly.
+Here’s a simple **Git & GitHub command** you can copy directly.
 
 ````md
 # Git & GitHub Command Cheat Sheet
@@ -212,7 +212,7 @@ If you want, I can also give you:
 
 ---
 
-Here is a **typical Git & GitHub workflow in `.md` format** you can use for documentation or a README.
+Here is a **typical Git & GitHub workflow format** 
 
 # Git & GitHub Workflow
 
