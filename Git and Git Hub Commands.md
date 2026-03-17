@@ -1,8 +1,7 @@
 Here’s a simple **Git & GitHub command** you can copy directly.
 
-````md
 # Git & GitHub Command Cheat Sheet
-````
+
 ## 1. Configure Git (First Time Setup)
 
 ```bash
@@ -197,9 +196,9 @@ git pull
 
 ---
 Here is a **typical Git & GitHub workflow format** 
-````md
+
 # Git & GitHub Workflow
-````
+
 ## 1. Clone the Repository
 
 Download the project from GitHub to your local machine.
